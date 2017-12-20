@@ -2,6 +2,10 @@
 
 A REST API is available to send screenshots to the VisualReview server from another process.
 
+## Getting started
+It is suggested that you start by creating a new run and afterwards upload a screenshot.
+
+Projects and suites are created on the fly, so by creating a new run everything will be ready for you to upload and compare screenshots.
 
 ## General structure
 
@@ -54,6 +58,7 @@ Get last run result. This is useful to poll whether a suite is working as expect
 
 ### Runs
 
+
 Path: `runs/{{run_id}}`
 Methods: GET
 
@@ -62,7 +67,9 @@ Get run specific information such as *startTime* and *branchName*.
 Path: `runs`
 Methods: POST
 
-Create a new run for for `{{suiteName}}` in `{{projectName}}`. The returned JSON object contains the run *id*
+Create a new run for `{{suiteName}}` in `{{projectName}}`. The returned JSON object contains the run *id*
+Both runs and projects are created on the fly. If you submit a POST data with a non existing `{{suiteName}}` or `{{projectName}}` a new project and/or suite will be created.
+Guidelines for formatting the JSON data submitted through the POST: '{"suiteName": "My Suite", "projectName": "My Project"}'
 
 ### Screenshots
 
